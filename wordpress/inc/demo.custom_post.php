@@ -44,7 +44,7 @@ $labelsCat1 = array(
   'parent_item_colon' => ''
 );
 register_taxonomy(
-  "democat", // need to be lowercase !!!!
+  "demos", // need to be lowercase !!!!
   array("demo"),
   array("hierarchical" => true,
   "labels" => $labelsCat1,

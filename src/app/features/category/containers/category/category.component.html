@@ -1,0 +1,25 @@
+<ion-header>
+  <app-menu-nav></app-menu-nav>
+</ion-header>
+<ion-content>
+  cat page
+  <div *ngIf="category | async as cat;">
+    <h1>{{ cat?.name}}</h1>
+    <p *ngIf="cat?.description">{{ cat?.description}}</p>
+  </div>
+  <div *ngIf="data$ | async as posts;">
+    <article *ngFor="let post of posts">
+      <header>
+        <a routerLink="{{post?.link.split('/').reverse()[0]}}" routerLinkActive="active">
+          <figure>
+            <picture>
+              <img [src]="post?.featured_image_src_medium" alt="{{post?.title.rendered}}" title="{{post?.title.rendered}}">
+            </picture>
+          </figure>
+          <h2 [innerHTML]="post?.title.rendered"></h2>
+        </a>
+      </header>
+      <div [innerHTML]="post?.excerpt.rendered"></div>
+    </article>
+  </div>
+</ion-content>

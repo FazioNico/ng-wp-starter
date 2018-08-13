@@ -1,0 +1,23 @@
+<ion-header>
+  <app-menu-nav></app-menu-nav>
+</ion-header>
+<ion-content>
+  <header *ngIf="(data$ | async) as home">
+    <h1 [innerHTML]="home?.title.rendered"></h1>
+    <div [innerHTML]="home?.content.rendered"></div>
+  </header>
+  blog page
+  <article *ngFor="let post of (posts$|async)">
+    <header>
+      <a routerLink="{{post?.link.split('blog/').reverse()[0]}}" routerLinkActive="active">
+        <figure>
+          <picture>
+            <img [src]="post?.featured_image_src_medium" alt="{{post?.title.rendered}}" title="{{post?.title.rendered}}">
+          </picture>
+        </figure>
+        <h2 [innerHTML]="post?.title.rendered"></h2>
+      </a>
+    </header>
+    <div [innerHTML]="post?.excerpt.rendered"></div>
+  </article>  
+</ion-content>
