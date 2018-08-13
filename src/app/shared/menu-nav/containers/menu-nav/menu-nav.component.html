@@ -1,0 +1,12 @@
+<div class="site-branding">
+  <p class="site-title"><a href="{{config?.site_url}}" rel="home">{{config?.site_title}}</a></p>
+  <p class="site-description">{{config?.site_description}}</p>
+</div>
+<nav>
+  <div id="primary-menu" class="menu">
+    <ul class="menu">
+      <li (click)="goPage({url: 'index'})">Index</li>
+      <li *ngFor="let item of menu" (click)="goPage(item)">{{ item.title }}</li>
+    </ul>
+  </div>
+</nav><!-- #site-navigation -->

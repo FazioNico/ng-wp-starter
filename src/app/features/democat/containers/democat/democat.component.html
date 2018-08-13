@@ -1,0 +1,22 @@
+<ion-header>
+  <app-menu-nav></app-menu-nav>
+</ion-header>
+<ion-content>
+  democat
+  <div *ngIf="datas$ | async as demos;">
+    <article *ngFor="let demo of demos">
+      <header>
+        {{demo?.link.split('/').reverse()[0]}}
+        <a routerLink="{{demo?.link.split('/').reverse()[0]}}" routerLinkActive="active">
+          <figure *ngIf="demo?.featured_image_src_medium">
+            <picture>
+              <img [src]="demo?.featured_image_src_medium" alt="{{demo?.title.rendered}}" title="{{demo?.title.rendered}}">
+            </picture>
+          </figure>
+          <h2 [innerHTML]="demo?.title.rendered"></h2>
+        </a>
+      </header>
+      <div [innerHTML]="demo?.excerpt.rendered"></div>
+    </article>
+  </div>
+</ion-content>

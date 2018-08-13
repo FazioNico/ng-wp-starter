@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  wpBase: 'wp-json/wp/v2/'
 };

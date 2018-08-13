@@ -1,0 +1,33 @@
+<ion-header>
+  <app-menu-nav></app-menu-nav>
+</ion-header>
+<ion-content>
+  single post page
+    <div *ngIf="data$ | async as post;">
+      <article  *ngIf="post?.type === 'post';else demoCustomPostType">
+        <figure>
+          <picture>
+            <img [src]="post?.featured_image_src_large" alt="{{post?.title?.rendered}}" title="{{post?.title?.rendered}}">
+          </picture>
+        </figure>
+        <header class="entry-header">
+          <h1 [innerHTML]="post?.title?.rendered"></h1>
+          <div [innerHTML]="post?.content?.rendered"></div>
+          <div class="entry-meta"></div><!-- .entry-meta -->
+        </header><!-- .entry-header -->
+    
+      </article>
+    
+      <ng-template #demoCustomPostType *ngIf="post">
+        <!-- custome post type -->
+        <figure>
+          <picture>
+            <img [src]="post?.featured_image_src_large" alt="{{post?.title?.rendered}}" title="{{post?.title?.rendered}}">
+          </picture>
+        </figure>
+        <h1 [innerHTML]="post?.title?.rendered"></h1>
+        <div [innerHTML]="post?.content?.rendered"></div>
+      </ng-template>
+    
+    </div>
+</ion-content>
