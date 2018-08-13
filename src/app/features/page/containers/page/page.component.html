@@ -5,5 +5,22 @@
   <p>
     page single works!
   </p>
+  <div *ngIf="data$ | async as post;">
+    <section  *ngIf="page?.type === 'page';else demoCustompageType">
+      <figure>
+        <picture>
+          <img [src]="page?.featured_image_src_large" alt="{{page?.title?.rendered}}" title="{{page?.title?.rendered}}">
+        </picture>
+      </figure>
+      <header class="entry-header">
+        <h1 [innerHTML]="page?.title?.rendered"></h1>
+        <div class="entry-meta"></div><!-- .entry-meta -->
+      </header><!-- .entry-header -->
+
+      <div class="entry-content">
+        <div [innerHTML]="page?.content?.rendered"></div>
+      </div><!-- .entry-content -->
+    </section>
+  </div>
 </ion-content>
 
